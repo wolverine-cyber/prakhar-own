@@ -96,9 +96,8 @@ header {
         <input class="btn" type="submit" value="Submit">
       </form>
       <ul id="displayList"></ul>
-
     </section>
-
+  
     <script>
       // function func1(event){
       //   event.preventDefault();
@@ -113,28 +112,22 @@ header {
       // localStorage.setItem("Detail",objSerialized);
       // let objDeserialized = JSON.parse(localStorage.getItem("Detail"));
       // console.log(objDeserialized);
-
       //VERY VERY VERY IMPORTANT TOPIC
       // function func1(event){
       //   event.preventDefault();
       //   let registration = {Usename: event.target.Username.value, UserMail: event.target.Usermail.value};
-
+        
       //   let regSerialized = JSON.stringify(registration);
       //   localStorage.setItem("UserDetails",regSerialized);
       // }
-
       //VERY VERY VERY IMPORTANT TOPIC
       function func1(event){
         event.preventDefault();
-        let registration = {Usename: event.target.Username.value, UserMail: event.target.Usermail.value};
         let username = event.target.Username.value;
         let usermail = event.target.Usermail.value;
         let usernumber = event.target.Phonenumber.value;
-
         let obj = {name: event.target.Username.value, mail: event.target.Usermail.value, number: event.target.Phonenumber.value};
-
-        let regSerialized = JSON.stringify(registration);
-        localStorage.setItem("UserDetails",regSerialized);
+        
         let objs = JSON.parse(localStorage.getItem(usermail) || '[]');
         objs.push(obj);
         localStorage.setItem(usermail,JSON.stringify(objs));
@@ -142,15 +135,30 @@ header {
         displayEntries(usermail);
       }
 
+      //function to add data on the browser.
       function displayEntries(usermail) {
         let ul = document.getElementById("displayList");
 
 // Retrieve the data from localStorage (assuming you have it stored as an array)
+// Retrieve the data from localStorage (assuming you have it stored as an array) delee the data from browser and local storage
 let dataFromLocalStorage = JSON.parse(localStorage.getItem(usermail) || '[]');
 
 dataFromLocalStorage.forEach((entry) => {
     let li = document.createElement("li");
     li.textContent = * Name - ${entry.name}, Email - ${entry.mail}, Phone - ${entry.number};
+
+    let delbutton = document.createElement('button');
+    delbutton.textContent = "Delete";
+    delbutton.addEventListener("click",() =>{
+      let index = Array.from(ul.children).indexOf(li);
+      // Remove the corresponding data entry from localStorage
+      dataFromLocalStorage.splice(index, 1);
+        localStorage.removeItem(usermail, JSON.stringify(dataFromLocalStorage));
+
+        // Remove the <li> element from the DOM
+        ul.removeChild(li);
+    })
+    li.appendChild(delbutton);
     ul.appendChild(li);
 });
       }
