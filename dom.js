@@ -38,7 +38,7 @@
 
    // }
    //GETELEMENTSBYTAGSNAME//
-   var li = document.getElementsByTagName('li');
+ /*  var li = document.getElementsByTagName('li');
    console.log(li);
    console.log(li[1]);
    li[1].textContent='hello 2';
@@ -47,9 +47,9 @@
    for(var i=0; i<li.length;i++){
     li[i].style.backgroundColor='red';
 
-   }
+   }*/
    //QUERYSELECTOR
-/*var header= document.querySelector('#main-header');
+var header= document.querySelector('#main-header');
 header.style.borderBottom='solid 4px #ccc';
 var input= document.querySelector('input');
 input.value='hello world'
@@ -64,18 +64,15 @@ var submit = document.querySelector('input[type="submit"]');
    //QUERYSELECTORALL//
    var titles = document.querySelectorAll('.title');
 
-  // console.log(titles);
-  // titles[0].textContent='Hello';
+   console.log(titles);
+   titles[0].textContent='Hello';
 
- //  var odd = document.querySelectorAll('li:nth-child(odd)');
- //  var odd = document.querySelectorAll('li:nth-child(even)');
+   var odd = document.querySelectorAll('li:nth-child(odd)');
+   var odd = document.querySelectorAll('li:nth-child(even)');
 
- //  for(var i=0; i<odd.length;i++){
-  //  odd[i].style.backgroundColor='#blue';
- //   even[i].style.backgroundColor='#skyblue';
+   for(var i=0; i<odd.length;i++){
+    odd[i].style.backgroundColor='#blue';
+    even[i].style.backgroundColor='#skyblue';
 
  //  }
    
-
-
-    
